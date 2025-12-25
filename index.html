@@ -3,17 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO</title>
+    <title>TaskMaster - Modern Todo App</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <h1>Todo App</h1>
-    <input placeholder="enter your task"/>
-    <button>Add task</button>
-    <ul>
-        <li><span>Eat</span><button class="complete">Complete</button><button class="delete">delete</button></li>
-        <li><span>Sleep</span><button class="complete">Complete</button><button class="delete">delete</button></li>
-    </ul>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-tasks"></i> TaskMaster</h1>
+                <p class="subtitle">Organize your day with style</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="task-input-section">
+                <div class="input-container">
+                    <input 
+                        type="text" 
+                        id="taskInput" 
+                        placeholder="What needs to be done today?"
+                        autocomplete="off"
+                    />
+                    <button id="addTaskBtn" class="add-btn">
+                        <i class="fas fa-plus"></i>
+                        <span>Add Task</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="task-stats">
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalTasks">2</span>
+                        <span class="stat-label">Total Tasks</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="completedTasks">0</span>
+                        <span class="stat-label">Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="pendingTasks">2</span>
+                        <span class="stat-label">Pending</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="task-list-section">
+                <div class="filter-tabs">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-list"></i> All
+                    </button>
+                    <button class="filter-btn" data-filter="pending">
+                        <i class="fas fa-clock"></i> Pending
+                    </button>
+                    <button class="filter-btn" data-filter="completed">
+                        <i class="fas fa-check-circle"></i> Completed
+                    </button>
+                </div>
+                
+                <ul id="taskList" class="task-list">
+                    <li class="task-item" data-status="pending">
+                        <div class="task-content">
+                            <input type="checkbox" class="task-checkbox">
+                            <span class="task-text">Eat</span>
+                        </div>
+                        <div class="task-actions">
+                            <button class="action-btn edit-btn" title="Edit task">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn delete-btn" title="Delete task">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li class="task-item" data-status="pending">
+                        <div class="task-content">
+                            <input type="checkbox" class="task-checkbox">
+                            <span class="task-text">Sleep</span>
+                        </div>
+                        <div class="task-actions">
+                            <button class="action-btn edit-btn" title="Edit task">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn delete-btn" title="Delete task">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>No tasks yet</h3>
+                    <p>Add your first task to get started!</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 TaskMaster. Built with <i class="fas fa-heart"></i> for productivity.</p>
+        </footer>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
